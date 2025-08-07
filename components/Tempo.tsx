@@ -6,25 +6,26 @@ interface propsTempo{
   max:number,
   min:number,
   description:string,
-  condition:string
+  condition:string,
+  moon:string
 }
 
-export default function Tempo({date, max, min, description, condition,} : propsTempo){
+export default function Tempo({date, max, min, description, condition, moon} : propsTempo){
 
-    const icones: Record<string, any> = {
-        clear_day: require('../assets/png/clear_day.png'),
-        clear_night: require('../assets/png/clear_night.png'),
-        cloud: require('../assets/png/cloud.png'),
-        cloudly_day: require('../assets/png/cloudly_day.png'),
-        cloudly_night: require('../assets/png/cloudly_night.png'),
-        fog: require('../assets/png/fog.png'),
-        hail: require('../assets/png/hail.png'),
-        none_day: require('../assets/png/none_day.png'),
-        none_night: require('../assets/png/none_night.png'),
-        rain: require('../assets/png/rain.png'),
-        snow: require('../assets/png/snow.png'),
-        storm: require('../assets/png/storm.png'),
-    }
+  const icones: Record<string, any> = {
+    clear_day: require('../assets/png/clear_day.png'),
+    clear_night: require('../assets/png/clear_night.png'),
+    cloud: require('../assets/png/cloud.png'),
+    cloudly_day: require('../assets/png/cloudly_day.png'),
+    cloudly_night: require('../assets/png/cloudly_night.png'),
+    fog: require('../assets/png/fog.png'),
+    hail: require('../assets/png/hail.png'),
+    none_day: require('../assets/png/none_day.png'),
+    none_night: require('../assets/png/none_night.png'),
+    rain: require('../assets/png/rain.png'),
+    snow: require('../assets/png/snow.png'),
+    storm: require('../assets/png/storm.png')
+} 
 
     return(
         <View style={styles.principal}>
@@ -35,7 +36,11 @@ export default function Tempo({date, max, min, description, condition,} : propsT
             <Text style={styles.texto}>Condição: {condition}</Text>
             <Image 
                 style={styles.imagem}
-                source={ìcones[condition]}
+                source={icones[condition]}
+            />
+            <Image
+                style={styles.imagem}
+                source={{uri:`https://assets.hgbrasil.com/weather/icons/moon/full${moon}.png`}}
             />
         </View>
     );
