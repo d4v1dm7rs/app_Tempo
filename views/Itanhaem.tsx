@@ -7,7 +7,7 @@ export default function Itanhaem() {
   const [dados, setDados] = useState<any[]>([]);
 
   async function buscaTempo(){
-    const response = await Api.get('weather?array_limit=3&fields=only_results,temp,city_name,forecast,condition,max,min,description,date,moon_phase&key=2c790d78&city_name=Itanhaem,SP');
+    const response = await Api.get('weather?array_limit=7&fields=only_results,temp,city_name,forecast,condition,max,min,description,date,moon_phase,full_date,weekday,humidity,cloudiness,rain,rain_probability,wind_speedy,sunrise,sunset&key=c0cd1deb&city_name=Itanhaem,SP');
     setDados(response.data.forecast);
   }
 
@@ -19,14 +19,16 @@ export default function Itanhaem() {
 
   return(
     <View style={styles.bloco}>
-        <Text style={styles.texto}>Previsão do Tempo para Itanhaém</Text>
+      <Text style={styles.texto}>Previsão do Tempo para Itanhaém</Text>
 
-        <FlatList
+      <FlatList
           data={dados}
           keyExtractor={(item)=>item.date}
           renderItem={({item})=> <Tempo date={item.date} max={item.max} min={item.min} description={item.description}
-             condition={item.condition} moon={item.moon_phase}
-             />}
+          condition={item.condition} moon={item.moon_phase} fullDate={item.full_date} weekday={item.weekday} humidity={item.humidity}
+          cloudiness={item.cloudiness} rain={item.rain} rainProbability={item.rain_probability} windSpeedy={item.wind_speedy} sunrise={item.sunrise} sunset={item.sunset}
+          />}
+        style={styles.lista}
         />
     </View>
   );
@@ -34,13 +36,16 @@ export default function Itanhaem() {
 
 const styles = StyleSheet.create ({
   bloco: {
-    backgroundColor: '#d2d2d2',
     flex: 1,
-    justifyContent: 'flex-start',
     alignItems: 'center',
-    marginTop: 40,
+    justifyContent: 'flex-start',
+    marginTop: 40
   },
   texto: {
-    fontSize: 25
+    fontSize: 20
+  },
+  lista: {
+    height: '70%',
+    width: '100%'
   }
 });

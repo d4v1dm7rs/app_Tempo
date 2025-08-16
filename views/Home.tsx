@@ -20,6 +20,20 @@ export default function Home() {
         >
         <Text style={styles.textoBtn}>Itanhaém</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Mongagua' as never)}
+        style={styles.btn}
+        >
+        <Text style={styles.textoBtn}>Mongaguá</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => navigation.navigate('PraiaGrande' as never)}
+        style={styles.btn}
+        >
+        <Text style={styles.textoBtn}>Praia Grande</Text>
+        </TouchableOpacity>
     </View>
   );
 }
@@ -28,7 +42,7 @@ const styles = StyleSheet.create ({
   bloco: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   texto: {
     fontSize: 30
@@ -37,8 +51,8 @@ const styles = StyleSheet.create ({
     width: '80%',
     padding: 10,
     backgroundColor: 'rgba(0, 0, 255, 0.6)',
-    marginBottom: 20,
-    marginTop: 20,
+    marginBottom: 10,
+    marginTop: 15,
     borderRadius: 15,
     boxShadow: '1px 5px 20px black'
   },
